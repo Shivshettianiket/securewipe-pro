@@ -1,0 +1,35 @@
+{
+  "certificate_id": "062047C7-800D-4D22-BA12-A4302C49EB76",
+  "issued_at": "2026-03-31T19:10:46.220444Z",
+  "issued_by": "SecureWipe Pro v1.0 \u2014 TechnoGreen / BMIT Solapur",
+  "standard": "NIST SP 800-88 Crypto Erase",
+  "wipe_method": "Cryptographic Erasure",
+  "device": {
+    "label": "Test Drive",
+    "type": "\ud83d\udd35 Demo Mode (Safe)",
+    "size_mb": 13,
+    "filesystem": "DEMO"
+  },
+  "wipe_result": {
+    "status": "PASSED",
+    "total_passes": 1,
+    "entropy_score": 7.9968,
+    "data_recovery_risk": "ZERO",
+    "pass_hashes": [
+      {
+        "pass": 1,
+        "pattern": "random",
+        "sha256": "eb8e71680e41076f2eabdd122851cc1b2f3c6375517c5b2e23156c249e8d959f"
+      }
+    ],
+    "start_time": "2026-03-31T19:10:46.047066",
+    "end_time": "2026-03-31T19:10:46.220185"
+  },
+  "system": {
+    "os": "Windows 11",
+    "hostname": "LAPTOP-AQQLORCS"
+  },
+  "sha256_hash": "a229d59dc648e88eccfd1016e68004c611b8b02c931ba0762b534f25b94da988",
+  "digital_signature": "DFWFhavG8a707ySDjayubMznnojWmZhVGk+1hX3GBB6wEhcZ5RsbypSer+wjF/2fa7cLgc8LGXYN3fFISJXR+3V7Fg0N6oMY4H6W4JVJQFqlmqvowy3M2xD+qVLOoMgv0OAYCYbmr1J1pupaiC0srJgZQedBuvmOIiaKM9ls6m4lSmLz/eBemx9ga4kzd8yGnV+vBC5LheEtpVZ2SSZEGh+vZeWKc2TLFwnG2Msl3MHX9GEQCwZO8/NV5eH8WvHifJekjdnhpaxVC03gFxA6z+tY88hPv+VuwvqwzwEmYfY9JbtrAkYbyzu2+fMx3BffNS59GqjW7bpnFw1R7Xkh1w==",
+  "public_key_pem": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtIP+DOYOwkfg7yxkvt+G\niibCysjvfsTZdqTmSdmL1UV5lnK5nP1B9aCRiaa0otgAXI4wB4exkYZ4KCZuF/9v\nR19zSEssJXIfHJYLgzM8JO9NrBdcQKf3ax76doyp++TxD9+4IhE0MuOnAAaXWnYd\narxSnGnflSbFLrCt0QOAKnD1xU44vGh0K9CuERPrd5ZM1ID0SRJ9ofrXQa/flmFl\nqTXrcvnuP3FBqSF2Y2fprtrfYj/nGHVBEZdlaXm3LLUSSwOd/MyDr/bnYXiyLGaK\nZJNSEQ28bJriAlHbK/Xg6ZTXW3CdSErxIg9Falp7hV4+w/PtrIywj4+nZiZO7aXb\nqwIDAQAB\n-----END PUBLIC KEY-----\n"
+}

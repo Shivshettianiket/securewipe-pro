@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>SecureWipe Pro — Powered by VAJRA Algorithm</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700;800&family=Sora:wght@300;400;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#02060f;--s1:#060d1a;--s2:#0a1628;--s3:#0e1f3a;--bdr:#0f2d50;
+  --c:#00e5f0;--c2:#00b4bb;--c3:#006b70;--g:#00ff88;--r:#ff3b5c;
+  --y:#ffc107;--pu:#a855f7;--w:#e8f4ff;--m:#4a6a8a;--m2:#6b8eae;
+  --mono:'JetBrains Mono',monospace;--ui:'Sora',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--ui);background:var(--bg);color:var(--w);min-height:100vh;overflow-x:hidden}
+#bgc{position:fixed;inset:0;z-index:0;pointer-events:none}
+.scan{position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,229,240,.01) 3px,rgba(0,229,240,.01) 4px)}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:900;height:58px;
+  background:rgba(2,6,15,.96);backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--bdr);
+  display:flex;align-items:center;justify-content:space-between;padding:0 28px}
+.nb{display:flex;align-items:center;gap:12px}
+.ni{width:36px;height:36px;border-radius:9px;
+  background:linear-gradient(135deg,var(--c),var(--c2));
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-weight:800;font-size:.78rem;color:var(--bg);
+  box-shadow:0 0 18px rgba(0,229,240,.4)}
+.nm{font-family:var(--mono);font-weight:800;font-size:.95rem;letter-spacing:.04em}
+.nm em{color:var(--c);font-style:normal}
+.ns{font-size:.55rem;color:var(--m2);letter-spacing:.16em;display:block;margin-top:1px}
+.nr{display:flex;align-items:center;gap:8px}
+.nbadge{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;
+  border:1px solid var(--c3);color:var(--c2);padding:3px 9px;border-radius:3px}
+.nbadge.vajra{border-color:rgba(255,193,7,.4);color:var(--y)}
+.nbadge.g{border-color:rgba(0,255,136,.3);color:var(--g)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--g);
+  box-shadow:0 0 10px var(--g);animation:dotpulse 2s ease-in-out infinite}
+@keyframes dotpulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.6);opacity:.4}}
+
+/* LAYOUT */
+.wrap{position:relative;z-index:2;max-width:1140px;margin:0 auto;padding:40px 20px 100px}
+
+/* HERO */
+.hero{text-align:center;padding:28px 0 44px}
+.hey{font-family:var(--mono);font-size:.68rem;letter-spacing:.4em;color:var(--c);opacity:.65;margin-bottom:16px}
+h1{font-size:clamp(2.6rem,5vw,4.2rem);font-weight:900;line-height:1.05;letter-spacing:-.025em;margin-bottom:8px}
+.hg{background:linear-gradient(100deg,var(--c) 0%,var(--pu) 50%,var(--c) 100%);
+  background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  animation:gs 4s linear infinite}
+@keyframes gs{to{background-position:200%}}
+.hsub{font-size:.9rem;color:var(--m2);margin:12px 0 8px}
+.hsub strong{color:var(--c)}
+.vajra-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  margin:10px 0 24px;
+  background:rgba(255,193,7,.08);border:1px solid rgba(255,193,7,.3);
+  border-radius:6px;padding:8px 18px;
+  font-family:var(--mono);font-size:.75rem;color:var(--y);letter-spacing:.06em}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.chip{font-family:var(--mono);font-size:.62rem;padding:5px 13px;border-radius:3px;
+  border:1px solid var(--bdr);color:var(--m2);transition:.25s;cursor:default}
+.chip:hover{border-color:var(--c);color:var(--c)}
+
+/* STAT STRIP */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:var(--bdr);border:1px solid var(--bdr);border-radius:12px;overflow:hidden;margin:32px 0}
+.sc{background:var(--s1);padding:18px 14px;display:flex;flex-direction:column;align-items:center;gap:5px;transition:.2s}
+.sc:hover{background:var(--s2)}
+.sn{font-family:var(--mono);font-size:1.55rem;font-weight:800;color:var(--c);
+  text-shadow:0 0 18px rgba(0,229,240,.4);line-height:1}
+.sn.g{color:var(--g);text-shadow:0 0 18px rgba(0,255,136,.4)}
+.sl{font-size:.66rem;color:var(--m2);text-align:center}
+
+/* CARDS */
+.card{background:var(--s1);border:1px solid var(--bdr);border-radius:14px;
+  overflow:hidden;margin-bottom:16px;transition:border-color .3s}
+.card:hover{border-color:rgba(0,229,240,.2)}
+.ch{padding:13px 22px;background:var(--s2);border-bottom:1px solid var(--bdr);
+  display:flex;align-items:center;gap:12px}
+.stag{font-family:var(--mono);font-size:.6rem;font-weight:800;
+  background:var(--c3);color:var(--c);padding:2px 9px;border-radius:3px;letter-spacing:.1em}
+.ctit{font-weight:700;font-size:.93rem}
+.chint{font-size:.7rem;color:var(--m);margin-left:auto}
+.cb{padding:22px}
+
+/* DRIVE CARDS */
+.dgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+.di{border:1px solid var(--bdr);border-radius:10px;padding:15px;cursor:pointer;
+  background:var(--s2);transition:.2s;position:relative;overflow:hidden}
+.di::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--c),var(--pu));transform:scaleX(0);
+  transform-origin:left;transition:.3s}
+.di:hover::after,.di.sel::after{transform:scaleX(1)}
+.di:hover,.di.sel{border-color:var(--c2);background:rgba(0,180,187,.07)}
+.di.sel .dck{display:flex}
+.dck{display:none;position:absolute;top:10px;right:10px;width:22px;height:22px;
+  border-radius:50%;background:var(--c);color:var(--bg);align-items:center;
+  justify-content:center;font-size:.8rem;font-weight:900;box-shadow:0 0 14px rgba(0,229,240,.5)}
+.dm{font-weight:700;font-size:.88rem;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dt{font-family:var(--mono);font-size:.62rem;color:var(--c);margin-bottom:10px}
+.bb{height:3px;background:var(--bdr);border-radius:2px;overflow:hidden;margin-bottom:5px}
+.bf{height:3px;background:linear-gradient(90deg,var(--c),var(--pu));border-radius:2px}
+.dsz{display:flex;justify-content:space-between;font-size:.65rem;color:var(--m2)}
+
+/* STRATEGY CARDS */
+.mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
+.mi{border:1px solid var(--bdr);border-radius:10px;padding:14px;cursor:pointer;
+  background:var(--s2);transition:.2s;position:relative}
+.mi:hover,.mi.sel{border-color:var(--c2);background:rgba(0,180,187,.06)}
+.mi.sel{border-color:var(--c);box-shadow:0 0 0 1px rgba(0,229,240,.15)}
+.mn{font-weight:800;font-size:.88rem;margin-bottom:3px}
+.mstd{font-family:var(--mono);font-size:.6rem;color:var(--m2);margin-bottom:6px}
+.mdesc{font-size:.72rem;color:var(--m2);margin-bottom:10px;line-height:1.4}
+.pips{display:flex;gap:4px;align-items:center}
+.pip{width:8px;height:8px;border-radius:50%;background:var(--c3);transition:.2s}
+.mi.sel .pip,.mi:hover .pip{background:var(--c);box-shadow:0 0 6px var(--c)}
+.pipc{font-family:var(--mono);font-size:.6rem;color:var(--m2);margin-left:4px}
+.vajra-badge{position:absolute;top:10px;right:10px;
+  font-family:var(--mono);font-size:.55rem;color:var(--y);
+  background:rgba(255,193,7,.12);border:1px solid rgba(255,193,7,.3);
+  padding:2px 6px;border-radius:3px}
+
+/* CATEGORY SELECT */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
+.cat-item{border:1px solid var(--bdr);border-radius:8px;padding:10px 14px;
+  cursor:pointer;background:var(--s2);transition:.2s;text-align:center}
+.cat-item:hover,.cat-item.sel{border-color:var(--pu);background:rgba(168,85,247,.06)}
+.cat-item.sel{border-color:var(--pu);box-shadow:0 0 0 1px rgba(168,85,247,.15)}
+.cat-icon{font-size:1.4rem;display:block;margin-bottom:5px}
+.cat-name{font-size:.78rem;font-weight:600}
+.cat-score{font-family:var(--mono);font-size:.62rem;color:var(--m2);margin-top:3px}
+
+/* THREAT METER */
+.threat-box{background:var(--s2);border:1px solid var(--bdr);border-radius:10px;
+  padding:16px 20px;margin-bottom:16px;display:none}
+.threat-box.show{display:block}
+.threat-row{display:flex;align-items:center;gap:14px}
+.threat-label{font-family:var(--mono);font-size:.7rem;color:var(--m2);min-width:100px}
+.threat-track{flex:1;height:8px;background:var(--bdr);border-radius:4px;overflow:hidden}
+.threat-fill{height:8px;border-radius:4px;transition:width .5s ease,background .5s ease}
+.threat-val{font-family:var(--mono);font-size:.88rem;font-weight:800;min-width:50px;text-align:right}
+.threat-strategy{font-family:var(--mono);font-size:.8rem;font-weight:800;color:var(--y);margin-top:10px}
+
+/* SLIDER */
+.srow{display:flex;align-items:center;gap:16px}
+input[type=range]{flex:1;-webkit-appearance:none;height:4px;
+  background:linear-gradient(90deg,var(--c) var(--pct,10%),var(--bdr) var(--pct,10%));
+  border-radius:2px;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;
+  border-radius:50%;background:var(--c);
+  box-shadow:0 0 14px rgba(0,229,240,.5),0 0 0 3px rgba(0,229,240,.12);
+  cursor:pointer;transition:.1s}
+.szn{font-family:var(--mono);font-size:1.4rem;font-weight:800;color:var(--c);
+  min-width:68px;text-align:right;text-shadow:0 0 16px rgba(0,229,240,.4)}
+
+/* SUMMARY */
+.sumbox{background:var(--s2);border:1px solid var(--bdr);border-radius:10px;
+  padding:15px 20px;display:none;margin-bottom:16px}
+.sumbox.show{display:block}
+.srow2{display:flex;gap:10px;font-size:.84rem;margin-bottom:5px}
+.srow2:last-child{margin:0}
+.sk{font-family:var(--mono);font-size:.68rem;color:var(--m2);min-width:100px}
+.sv{font-weight:600}.sv.c{color:var(--c);font-family:var(--mono)}
+.sv.y{color:var(--y);font-family:var(--mono)}
+
+/* WIPE BTN */
+.wbtn{width:100%;height:54px;border-radius:10px;border:none;
+  background:linear-gradient(135deg,var(--c),var(--c2));
+  color:var(--bg);font-family:var(--mono);font-size:.95rem;font-weight:800;
+  letter-spacing:.14em;cursor:pointer;position:relative;overflow:hidden;transition:.3s;
+  display:flex;align-items:center;justify-content:center;gap:12px}
+.wbtn::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);
+  transform:translateX(-100%)}
+.wbtn:not(:disabled):hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,229,240,.4)}
+.wbtn:not(:disabled):hover::after{animation:sheen .7s ease}
+@keyframes sheen{to{transform:translateX(100%)}}
+.wbtn:disabled{opacity:.3;cursor:not-allowed}
+
+/* PROGRESS */
+#progsec{display:none}
+#progsec.show{display:block}
+.pctc{display:flex;flex-direction:column;align-items:center;padding:20px 0 10px}
+.bigpct{font-family:var(--mono);font-size:5.5rem;font-weight:800;line-height:1;
+  color:var(--c);text-shadow:0 0 50px rgba(0,229,240,.55);transition:.4s}
+.plabel{font-family:var(--mono);font-size:.76rem;color:var(--m2);margin-top:10px;text-align:center;min-height:20px}
+.pstrategy{font-family:var(--mono);font-size:.7rem;color:var(--y);margin-top:4px;text-align:center}
+.pbg{height:8px;background:var(--s3);border-radius:4px;overflow:hidden;margin-top:16px}
+.pfill{height:8px;border-radius:4px;
+  background:linear-gradient(90deg,var(--c2),var(--c),var(--pu));background-size:200%;
+  transition:width .4s ease;box-shadow:0 0 14px rgba(0,229,240,.6);
+  animation:pshine 2s linear infinite}
+@keyframes pshine{to{background-position:200%}}
+.mgrid2{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+.mini{background:var(--s2);border:1px solid var(--bdr);border-radius:10px;padding:14px;text-align:center}
+.minn{font-family:var(--mono);font-size:1.4rem;font-weight:800;color:var(--c);display:block}
+.minl{font-size:.66rem;color:var(--m2);margin-top:3px}
+.entrow{display:flex;align-items:center;gap:14px;margin-top:16px;
+  background:var(--s2);border:1px solid var(--bdr);border-radius:10px;padding:14px 18px}
+.entlbl{font-family:var(--mono);font-size:.68rem;color:var(--m2);min-width:90px}
+.enttrack{flex:1;height:8px;background:var(--bdr);border-radius:4px;overflow:hidden}
+.entfill{height:8px;border-radius:4px;background:linear-gradient(90deg,var(--r),var(--y),var(--g));
+  transition:width .5s ease}
+.entval{font-family:var(--mono);font-size:.85rem;font-weight:800;color:var(--g);min-width:60px;text-align:right}
+
+/* SECTOR MAP */
+.smaptit{font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;color:var(--m2);margin-bottom:8px}
+.smap{display:grid;grid-template-columns:repeat(32,1fr);gap:2px;margin-top:10px}
+.sec{height:10px;border-radius:1px;background:var(--bdr);transition:.3s}
+.sec.wiped{background:var(--c);box-shadow:0 0 4px rgba(0,229,240,.5)}
+.sec.wiping{background:var(--pu);animation:secp .6s ease-in-out infinite alternate}
+@keyframes secp{from{opacity:.5}to{opacity:1}}
+.sleg{display:flex;gap:14px;margin-top:7px;font-family:var(--mono);font-size:.6rem;color:var(--m2)}
+.legdot{width:10px;height:10px;border-radius:2px;display:inline-block;margin-right:4px;vertical-align:middle}
+
+/* HEX DUMP */
+.hexpanel{margin-top:14px;background:#000;border:1px solid var(--c3);border-radius:10px;overflow:hidden}
+.hexbar{height:34px;background:var(--s3);border-bottom:1px solid var(--bdr);
+  display:flex;align-items:center;gap:8px;padding:0 14px}
+.hexdot{width:10px;height:10px;border-radius:50%}
+.hextit{font-family:var(--mono);font-size:.63rem;color:var(--m2);margin-left:4px;letter-spacing:.1em}
+.hexbody{padding:12px 14px;min-height:110px;font-family:var(--mono);font-size:.7rem;line-height:1.85;overflow:hidden}
+.hexrow{display:flex;gap:12px;animation:hfi .2s ease}
+@keyframes hfi{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
+.haddr{color:var(--m);min-width:48px}
+.hbytes{color:var(--c);flex:1;letter-spacing:.04em}
+.hascii{color:var(--g);opacity:.6}
+.hcur{display:inline-block;width:8px;height:13px;background:var(--c);
+  margin-left:3px;animation:hc .85s step-end infinite;vertical-align:middle}
+@keyframes hc{0%,100%{opacity:1}50%{opacity:0}}
+
+/* CERT */
+#certsec{display:none}
+#certsec.show{display:block}
+.chero{background:linear-gradient(135deg,rgba(0,255,136,.07),rgba(0,229,240,.05));
+  border:1px solid rgba(0,255,136,.28);border-radius:12px;
+  padding:18px 22px;display:flex;align-items:center;gap:16px;margin-bottom:18px}
+.cico{font-size:2.4rem}
+.cht{font-size:1.1rem;font-weight:800;color:var(--g);margin-bottom:4px}
+.chs{font-size:.78rem;color:var(--m2)}
+.c2col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+@media(max-width:640px){.c2col{grid-template-columns:1fr}}
+.ibox{background:var(--s2);border:1px solid var(--bdr);border-radius:10px;padding:14px}
+.ibl{font-family:var(--mono);font-size:.58rem;letter-spacing:.18em;color:var(--m2);margin-bottom:6px}
+.ibv{font-family:var(--mono);font-size:.72rem;color:var(--c);word-break:break-all;line-height:1.6}
+.ibs{font-size:.62rem;color:var(--m2);word-break:break-all;line-height:1.5;margin-top:4px}
+.qrbox{background:var(--s2);border:1px solid var(--bdr);border-radius:10px;padding:18px;text-align:center}
+.qrbox img{width:155px;height:155px;border-radius:10px;border:2px solid var(--c);box-shadow:0 0 18px rgba(0,229,240,.3)}
+.dlbtns{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.dbtn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:8px;
+  border:1px solid var(--bdr);color:var(--w);background:var(--s2);
+  font-size:.82rem;font-weight:600;cursor:pointer;transition:.2s;font-family:var(--ui)}
+.dbtn:hover{border-color:var(--c);color:var(--c);background:rgba(0,229,240,.06)}
+.dbtn.ghost{border-color:var(--m);color:var(--m2)}
+.dbtn.ghost:hover{border-color:var(--m2);color:var(--w)}
+.htbl{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:.68rem}
+.htbl th{text-align:left;padding:8px 12px;background:var(--s2);color:var(--c);
+  border-bottom:1px solid var(--bdr);font-size:.6rem;letter-spacing:.12em}
+.htbl td{padding:6px 12px;border-bottom:1px solid rgba(15,45,80,.6);color:var(--m2)}
+.htbl tr:hover td{background:rgba(0,229,240,.03);color:var(--w)}
+.bcbox{background:var(--s2);border:1px solid var(--bdr);border-radius:10px;padding:14px;margin-top:14px}
+.bct{font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;color:var(--pu);margin-bottom:8px}
+.bcrow{display:flex;gap:10px;margin-bottom:5px;font-size:.68rem;font-family:var(--mono)}
+.bck{color:var(--m2);min-width:100px}.bcv{color:var(--pu);word-break:break-all;flex:1}
+
+/* VERIFY */
+.dzone{border:2px dashed var(--bdr);border-radius:12px;padding:44px;text-align:center;cursor:pointer;transition:.25s}
+.dzone:hover,.dzone.over{border-color:var(--c);background:rgba(0,229,240,.04)}
+.dzico{font-size:2.6rem;display:block;margin-bottom:12px}
+.dzt{font-weight:700;font-size:1rem;margin-bottom:6px}
+.dzs{font-size:.78rem;color:var(--m2)}
+.vres{margin-top:14px;border-radius:10px;padding:15px 18px;font-size:.88rem;display:none}
+.vres.ok{display:block;background:rgba(0,255,136,.07);border:1px solid rgba(0,255,136,.3);color:var(--g)}
+.vres.fail{display:block;background:rgba(255,59,92,.07);border:1px solid rgba(255,59,92,.3);color:var(--r)}
+.vres strong{font-weight:800}
+.vdet{font-size:.72rem;color:var(--m2);margin-top:6px;font-family:var(--mono);line-height:1.7}
+
+/* SYSMON */
+.sysmon{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+.syscell{background:var(--s2);border:1px solid var(--bdr);border-radius:8px;padding:12px}
+.sysl{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;color:var(--m2);margin-bottom:5px}
+.sysbar{height:4px;background:var(--bdr);border-radius:2px;overflow:hidden}
+.sysfill{height:4px;border-radius:2px;background:var(--c);transition:.6s}
+.sysv{font-family:var(--mono);font-size:.72rem;color:var(--c);margin-top:4px}
+
+footer{text-align:center;padding:28px 0 0;border-top:1px solid var(--bdr);
+  font-family:var(--mono);font-size:.63rem;color:var(--m);letter-spacing:.1em;line-height:2.4}
+@media(max-width:640px){.stats{grid-template-columns:1fr 1fr}.nr .nbadge:not(.vajra){display:none}}
+</style>
+</head>
+<body>
+<canvas id="bgc"></canvas>
+<div class="scan"></div>
+
+<nav class="nav">
+  <div class="nb">
+    <div class="ni">SW</div>
+    <div>
+      <span class="nm">Secure<em>Wipe</em> Pro</span>
+      <span class="ns">INDIA'S FIRST INDIGENOUS DATA SANITIZATION PLATFORM</span>
+    </div>
+  </div>
+  <div class="nr">
+    <span class="nbadge vajra">⚡ VAJRA v1.0</span>
+    <span class="nbadge">NIST 800-88</span>
+    <span class="nbadge">RSA-2048</span>
+    <span class="nbadge g">BLOCKCHAIN</span>
+    <span class="dot"></span>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hey">▸ TEAM TECHNOGREEN · BMIT SOLAPUR</div>
+  <h1>Wipe. Certify.<br><span class="hg">Recycle Without Fear.</span></h1>
+  <p class="hsub">Hardware-level sanitization for SSD, HDD, NVMe, USB · <strong>Powered by VAJRA Algorithm</strong></p>
+  <div class="vajra-tag">
+    ⚡ VAJRA — Verified Adaptive Junk-data Removal Algorithm · India's First · Patent Pending
+  </div>
+  <div class="chips">
+    <span class="chip">SSD / HDD / NVMe / USB</span>
+    <span class="chip">HPA / DCO Hidden Areas</span>
+    <span class="chip">ATA Secure Erase</span>
+    <span class="chip">Chaotic XOR Pattern</span>
+    <span class="chip">Entropy Feedback</span>
+    <span class="chip">India Threat Model</span>
+    <span class="chip">RSA-2048 Signed Certs</span>
+    <span class="chip">Blockchain Anchor</span>
+    <span class="chip">Bulk Parallel Wipe</span>
+    <span class="chip">Bootable ISO</span>
+  </div>
+</section>
+
+<!-- SYSMON -->
+<div class="sysmon" id="sysmon">
+  <div class="syscell"><div class="sysl">CPU USAGE</div><div class="sysbar"><div class="sysfill" id="cpuB" style="width:0%"></div></div><div class="sysv" id="cpuV">—</div></div>
+  <div class="syscell"><div class="sysl">RAM USAGE</div><div class="sysbar"><div class="sysfill" id="ramB" style="width:0%"></div></div><div class="sysv" id="ramV">—</div></div>
+  <div class="syscell"><div class="sysl">SESSION STATS</div><div class="sysbar"><div class="sysfill" id="wipB" style="width:20%"></div></div><div class="sysv" id="wipV">0 wipes · 0 certs</div></div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="sc"><div class="sn">1.75M</div><div class="sl">Tonnes e-waste/yr India</div></div>
+  <div class="sc"><div class="sn">₹50K Cr</div><div class="sl">Hoarded IT assets</div></div>
+  <div class="sc"><div class="sn g" id="sW">0</div><div class="sl">Session wipes</div></div>
+  <div class="sc"><div class="sn g" id="sC">0</div><div class="sl">Certs issued</div></div>
+</div>
+
+<!-- STEP 1: DRIVE -->
+<div class="card">
+  <div class="ch"><span class="stag">01</span><span class="ctit">Select Device</span><span class="chint">Click to select</span></div>
+  <div class="cb"><div class="dgrid" id="dGrid"><div style="color:var(--m2);font-family:var(--mono);font-size:.8rem">// scanning devices...</div></div></div>
+</div>
+
+<!-- STEP 2: DATA CATEGORY -->
+<div class="card">
+  <div class="ch"><span class="stag">02</span><span class="ctit">Data Category</span><span class="chint">VAJRA auto-selects threat level</span></div>
+  <div class="cb">
+    <div style="font-family:var(--mono);font-size:.7rem;color:var(--m2);margin-bottom:12px">// VAJRA threat model scores category → auto-recommends wipe strategy</div>
+    <div class="cat-grid" id="catGrid"></div>
+    <div class="threat-box" id="threatBox">
+      <div class="threat-row">
+        <span class="threat-label">THREAT SCORE</span>
+        <div class="threat-track"><div class="threat-fill" id="threatFill" style="width:0%"></div></div>
+        <span class="threat-val" id="threatVal">—</span>
+      </div>
+      <div class="threat-strategy" id="threatStrat">// Select drive + category to see VAJRA recommendation</div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 3: VAJRA STRATEGY -->
+<div class="card">
+  <div class="ch"><span class="stag">03</span><span class="ctit">VAJRA Wipe Strategy</span><span class="chint">Auto-recommended based on threat score</span></div>
+  <div class="cb"><div class="mgrid" id="mGrid"><div style="color:var(--m2);font-family:var(--mono)">// loading VAJRA strategies...</div></div></div>
+</div>
+
+<!-- STEP 4: CONFIGURE & LAUNCH -->
+<div class="card">
+  <div class="ch"><span class="stag">04</span><span class="ctit">Configure &amp; Launch</span></div>
+  <div class="cb">
+    <div style="margin-bottom:20px">
+      <div style="font-family:var(--mono);font-size:.7rem;color:var(--m2);margin-bottom:10px">// demo file size — safe simulation, no real data affected</div>
+      <div class="srow">
+        <input type="range" id="slider" min="1" max="50" value="5" oninput="onSlide(this)"/>
+        <span class="szn" id="szNum">5 MB</span>
+      </div>
+    </div>
+    <div class="sumbox" id="sumbox">
+      <div class="srow2"><span class="sk">device</span><span class="sv" id="sumDev">—</span></div>
+      <div class="srow2"><span class="sk">category</span><span class="sv" id="sumCat">—</span></div>
+      <div class="srow2"><span class="sk">strategy</span><span class="sv y" id="sumStrat">—</span></div>
+      <div class="srow2"><span class="sk">passes</span><span class="sv c" id="sumPass">—</span></div>
+      <div class="srow2"><span class="sk">standard</span><span class="sv" id="sumStd">—</span></div>
+    </div>
+    <button class="wbtn" id="wbtn" onclick="launchWipe()" disabled>⬡ &nbsp; INITIATE VAJRA SECURE WIPE</button>
+  </div>
+</div>
+
+<!-- PROGRESS -->
+<div class="card" id="progsec">
+  <div class="ch">
+    <span class="stag" style="background:rgba(168,85,247,.18);color:var(--pu)">LIVE</span>
+    <span class="ctit">VAJRA Wipe In Progress</span>
+    <span class="chint" style="color:var(--r)">⬤ Hardware-level destruction active</span>
+  </div>
+  <div class="cb">
+    <div class="pctc">
+      <div class="bigpct" id="bigPct">0%</div>
+      <div class="plabel" id="pLabel">Initializing VAJRA...</div>
+      <div class="pstrategy" id="pStrat"></div>
+      <div class="pbg" style="width:100%"><div class="pfill" id="pFill" style="width:0%"></div></div>
+    </div>
+    <div class="mgrid2">
+      <div class="mini"><span class="minn" id="mPass">—</span><div class="minl">Current Pass</div></div>
+      <div class="mini"><span class="minn" id="mTotal">—</span><div class="minl">Total Passes</div></div>
+      <div class="mini"><span class="minn" style="color:var(--g)">ZERO</span><div class="minl">Recovery Risk</div></div>
+    </div>
+    <div class="entrow">
+      <span class="entlbl">ENTROPY</span>
+      <div class="enttrack"><div class="entfill" id="entF" style="width:0%"></div></div>
+      <span class="entval" id="entV">0.00/8</span>
+    </div>
+    <div style="margin-top:16px">
+      <div class="smaptit">SECTOR VISUALIZATION — 256 SECTORS</div>
+      <div class="smap" id="smap"></div>
+      <div class="sleg">
+        <span><span class="legdot" style="background:var(--bdr)"></span>Pending</span>
+        <span><span class="legdot" style="background:var(--pu)"></span>Wiping</span>
+        <span><span class="legdot" style="background:var(--c)"></span>Wiped</span>
+      </div>
+    </div>
+    <div class="hexpanel">
+      <div class="hexbar">
+        <div class="hexdot" style="background:#ff5f57"></div>
+        <div class="hexdot" style="background:#ffbe2e"></div>
+        <div class="hexdot" style="background:#28c940"></div>
+        <span class="hextit">VAJRA LIVE HEX DUMP — RAW SECTOR BYTES</span>
+      </div>
+      <div class="hexbody" id="hexBody"><div class="hexrow"><span class="haddr">0x0000</span><span class="hbytes">-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --</span><span class="hascii">................</span></div><span class="hcur"></span></div>
+    </div>
+  </div>
+</div>
+
+<!-- CERT -->
+<div class="card" id="certsec">
+  <div class="ch">
+    <span class="stag" style="background:rgba(0,255,136,.12);color:var(--g)">✓ DONE</span>
+    <span class="ctit">VAJRA Wipe Certificate Issued</span>
+  </div>
+  <div class="cb">
+    <div class="chero">
+      <div class="cico">🛡️</div>
+      <div>
+        <div class="cht">✅ DATA PERMANENTLY & IRREVERSIBLY DESTROYED — VAJRA VERIFIED</div>
+        <div class="chs">RSA-2048 signed · SHA-256 tamper-proof · Blockchain anchored · VAJRA v1.0 · Third-party verifiable</div>
+      </div>
+    </div>
+    <div class="c2col">
+      <div>
+        <div class="ibox" style="margin-bottom:12px">
+          <div class="ibl">CERTIFICATE ID</div>
+          <div class="ibv" id="certId">—</div>
+        </div>
+        <div class="ibox" style="margin-bottom:12px">
+          <div class="ibl">VAJRA ALGORITHM INFO</div>
+          <div class="ibv" id="vajraInfo" style="color:var(--y)">—</div>
+        </div>
+        <div class="ibox">
+          <div class="ibl">SHA-256 HASH</div>
+          <div class="ibs" id="certHash">—</div>
+        </div>
+        <div class="dlbtns">
+          <button class="dbtn" onclick="dlC('pdf')">📄 PDF Certificate</button>
+          <button class="dbtn" onclick="dlC('json')">{ } JSON Certificate</button>
+          <button class="dbtn ghost" onclick="resetApp()">↩ New Wipe</button>
+        </div>
+      </div>
+      <div class="qrbox">
+        <div class="ibl" style="text-align:center;margin-bottom:10px">QR VERIFICATION</div>
+        <img id="qrImg" src="" alt="QR"/>
+        <div style="font-family:var(--mono);font-size:.63rem;color:var(--m2);margin-top:8px">Scan · Verify · Blockchain anchored</div>
+      </div>
+    </div>
+    <div class="bcbox">
+      <div class="bct">BLOCKCHAIN INTEGRITY ANCHOR</div>
+      <div class="bcrow"><span class="bck">Block Hash</span><span class="bcv" id="bcH">—</span></div>
+      <div class="bcrow"><span class="bck">Nonce</span><span class="bcv" id="bcN">—</span></div>
+      <div class="bcrow"><span class="bck">Prev Block</span><span class="bcv" id="bcP">—</span></div>
+    </div>
+    <div style="margin-top:16px">
+      <div style="font-family:var(--mono);font-size:.58rem;letter-spacing:.18em;color:var(--m2);margin-bottom:10px">VAJRA PASS-LEVEL SHA-256 HASHES</div>
+      <table class="htbl"><thead><tr><th>PASS</th><th>VAJRA PATTERN</th><th>SHA-256 HASH</th></tr></thead><tbody id="hashBody"></tbody></table>
+    </div>
+  </div>
+</div>
+
+<!-- VERIFY -->
+<div class="card">
+  <div class="ch">
+    <span class="stag" style="background:rgba(168,85,247,.15);color:var(--pu)">VERIFY</span>
+    <span class="ctit">Third-Party Certificate Verification</span>
+  </div>
+  <div class="cb">
+    <p style="font-family:var(--mono);font-size:.7rem;color:var(--m2);margin-bottom:16px">// Verify RSA-2048 signature of any VAJRA/SecureWipe Pro certificate</p>
+    <div class="dzone" id="dz" onclick="document.getElementById('fu').click()"
+      ondragover="event.preventDefault();this.classList.add('over')"
+      ondragleave="this.classList.remove('over')"
+      ondrop="onDrop(event)">
+      <span class="dzico">📜</span>
+      <div class="dzt">Drop JSON Certificate Here</div>
+      <div class="dzs">or click to browse · .json files only</div>
+    </div>
+    <input type="file" id="fu" accept=".json" style="display:none" onchange="verifyCert(this.files[0])"/>
+    <div class="vres" id="vres"></div>
+  </div>
+</div>
+
+<footer>
+  🔐 SECUREWIPE PRO v3.0 · ⚡ VAJRA ALGORITHM v1.0 · TEAM TECHNOGREEN · BMIT SOLAPUR · 2026<br>
+  NIST SP 800-88 · DoD 5220.22-M · RSA-2048 · BLOCKCHAIN · India IT Act 2000 § 43A · Patent Pending
+</footer>
+</div>
+
+<script>
+// Canvas particles
+const cv=document.getElementById('bgc'),cx=cv.getContext('2d');
+let W,H,pts=[];
+function rsz(){W=cv.width=window.innerWidth;H=cv.height=window.innerHeight}
+rsz();window.addEventListener('resize',rsz);
+class Pt{constructor(){this.reset()}reset(){this.x=Math.random()*W;this.y=Math.random()*H;this.vx=(Math.random()-.5)*.22;this.vy=(Math.random()-.5)*.22;this.r=Math.random()*1.4+.4;this.a=Math.random()*.5;this.col=Math.random()>.6?'0,229,240':Math.random()>.5?'0,255,136':'168,85,247'}step(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>W||this.y<0||this.y>H)this.reset()}draw(){cx.beginPath();cx.arc(this.x,this.y,this.r,0,Math.PI*2);cx.fillStyle=`rgba(${this.col},${this.a*.35})`;cx.fill()}}
+for(let i=0;i<90;i++)pts.push(new Pt());
+function drawBg(){cx.clearRect(0,0,W,H);for(let i=0;i<pts.length;i++){for(let j=i+1;j<pts.length;j++){const d=Math.hypot(pts[i].x-pts[j].x,pts[i].y-pts[j].y);if(d<110){cx.beginPath();cx.moveTo(pts[i].x,pts[i].y);cx.lineTo(pts[j].x,pts[j].y);cx.strokeStyle=`rgba(0,180,187,${(1-d/110)*.1})`;cx.lineWidth=.5;cx.stroke()}}pts[i].draw();pts[i].step()}requestAnimationFrame(drawBg)}
+drawBg();
+
+// App state
+let selDrive=null,selMethod=null,selCat='generic',session=null;
+let wipes=0,certs=0,sectorEls=[];
+const SECTORS=256;
+
+// Init sector map
+(()=>{const m=document.getElementById('smap');for(let i=0;i<SECTORS;i++){const el=document.createElement('div');el.className='sec';m.appendChild(el);sectorEls.push(el)}})();
+
+// Init app
+(async()=>{await Promise.all([loadDrives(),loadCategories(),loadMethods()]);updateSys();setInterval(updateSys,6000)})();
+
+async function updateSys(){
+  try{const d=await(await fetch('/api/system')).json();
+    document.getElementById('cpuB').style.width=d.cpu_percent+'%';
+    document.getElementById('cpuV').textContent=d.cpu_percent+'% — '+d.os;
+    document.getElementById('ramB').style.width=d.ram_percent+'%';
+    document.getElementById('ramV').textContent=`${d.ram_used_gb}/${d.ram_total_gb} GB`;
+    document.getElementById('wipV').textContent=`${d.total_wipes} wipes · ${d.total_certs} certs`;
+  }catch(e){}
+}
+
+async function loadDrives(){
+  const data=await(await fetch('/api/drives')).json();
+  const g=document.getElementById('dGrid');g.innerHTML='';
+  data.forEach(d=>{
+    const el=document.createElement('div');el.className='di';el.onclick=()=>pickDrive(d,el);
+    el.innerHTML=`<span class="dck">✓</span><div class="dm">${d.mountpoint}</div><div class="dt">${d.drive_type}</div><div class="bb"><div class="bf" style="width:${d.percent||0}%"></div></div><div class="dsz"><span>${d.used_gb} GB used</span><span>${d.total_gb} GB</span></div>`;
+    g.appendChild(el);
+  });
+}
+function pickDrive(d,el){document.querySelectorAll('.di').forEach(e=>e.classList.remove('sel'));el.classList.add('sel');selDrive=d;calcThreat();sync()}
+
+async function loadCategories(){
+  const data=await(await fetch('/api/categories')).json();
+  const cats={generic:'🗂️',personal:'👤',corporate:'🏢',healthcare:'🏥',banking:'🏦',government:'🏛️'};
+  const g=document.getElementById('catGrid');g.innerHTML='';
+  Object.entries(data).forEach(([key,label])=>{
+    const el=document.createElement('div');el.className='cat-item'+(key==='generic'?' sel':'');
+    el.onclick=()=>pickCat(key,el);
+    el.innerHTML=`<span class="cat-icon">${cats[key]||'📁'}</span><div class="cat-name">${label}</div>`;
+    g.appendChild(el);
+  });
+}
+function pickCat(key,el){document.querySelectorAll('.cat-item').forEach(e=>e.classList.remove('sel'));el.classList.add('sel');selCat=key;calcThreat();sync()}
+
+async function calcThreat(){
+  if(!selDrive)return;
+  const res=await fetch('/api/threat_score',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({drive_type:selDrive.drive_type.replace(' 🔵',''),data_category:selCat})});
+  const t=await res.json();
+  const pct=t.percent||0;
+  const color=pct>=90?'#ff3b5c':pct>=80?'#ffc107':pct>=70?'#a855f7':'#00ff88';
+  document.getElementById('threatFill').style.cssText=`width:${pct}%;background:${color}`;
+  document.getElementById('threatVal').style.color=color;
+  document.getElementById('threatVal').textContent=pct+'%';
+  document.getElementById('threatStrat').textContent=`⚡ VAJRA recommends: ${t.strategy} (${t.passes} passes)`;
+  document.getElementById('threatBox').classList.add('show');
+  // Auto-select recommended strategy
+  document.querySelectorAll('.mi').forEach(el=>{
+    if(el.dataset.strategy===t.strategy.toLowerCase().replace('-','_'))el.click();
+  });
+}
+
+async function loadMethods(){
+  const data=await(await fetch('/api/methods')).json();
+  const g=document.getElementById('mGrid');g.innerHTML='';
+  Object.entries(data).forEach(([key,m])=>{
+    const el=document.createElement('div');el.className='mi';el.dataset.strategy=key;
+    el.onclick=()=>pickMethod(key,m,el);
+    const pips=Array.from({length:Math.min(m.passes,9)},()=>'<span class="pip"></span>').join('');
+    el.innerHTML=`<span class="vajra-badge">VAJRA</span><div class="mn" style="color:${m.color}">${m.label}</div><div class="mstd">${m.standard}</div><div class="mdesc">${m.desc}</div><div class="pips">${pips}<span class="pipc">${m.passes}×</span></div>`;
+    g.appendChild(el);
+    if(key==='vajra_std')el.click();
+  });
+}
+function pickMethod(key,m,el){document.querySelectorAll('.mi').forEach(e=>e.classList.remove('sel'));el.classList.add('sel');selMethod={key,...m};sync()}
+
+function onSlide(el){const v=el.value,max=el.max;el.style.setProperty('--pct',(v/max*100)+'%');document.getElementById('szNum').textContent=v+' MB'}
+(()=>{const s=document.getElementById('slider');s.style.setProperty('--pct','10%')})();
+
+function sync(){
+  if(!selDrive||!selMethod)return;
+  document.getElementById('sumbox').classList.add('show');
+  document.getElementById('sumDev').textContent=selDrive.mountpoint;
+  document.getElementById('sumCat').textContent=selCat;
+  document.getElementById('sumStrat').textContent=selMethod.label;
+  document.getElementById('sumPass').textContent=selMethod.passes+' passes';
+  document.getElementById('sumStd').textContent=selMethod.standard;
+  document.getElementById('wbtn').disabled=false;
+}
+
+function updateSectors(pct){const w=Math.floor(pct/100*SECTORS);sectorEls.forEach((el,i)=>{if(i<w-1)el.className='sec wiped';else if(i===w-1||i===w)el.className='sec wiping';else el.className='sec'})}
+
+function updateEntropy(v){const p=Math.min(v/8*100,100);document.getElementById('entF').style.width=p+'%';document.getElementById('entV').textContent=v.toFixed(2)+'/8'}
+
+function renderHex(hex){
+  const body=document.getElementById('hexBody');
+  const cur=body.querySelector('.hcur');if(cur)cur.remove();
+  const bytes=(hex.match(/.{1,2}/g)||[]);
+  let html='';
+  for(let r=0;r<Math.min(5,Math.ceil(bytes.length/16));r++){
+    const ch=bytes.slice(r*16,(r+1)*16);
+    const addr=`0x${(r*16).toString(16).padStart(4,'0')}`;
+    const bh=ch.join(' ').padEnd(47,' ');
+    const ascii=ch.map(b=>{const c=parseInt(b,16);return c>=32&&c<127?String.fromCharCode(c):'.'}).join('');
+    html+=`<div class="hexrow"><span class="haddr">${addr}</span><span class="hbytes">${bh}</span><span class="hascii">${ascii}</span></div>`;
+  }
+  body.innerHTML=html+'<span class="hcur"></span>';
+}
+
+async function launchWipe(){
+  if(!selDrive||!selMethod)return;
+  const sz=parseInt(document.getElementById('slider').value);
+  document.getElementById('wbtn').disabled=true;
+  document.getElementById('progsec').classList.add('show');
+  document.getElementById('certsec').classList.remove('show');
+  document.getElementById('progsec').scrollIntoView({behavior:'smooth',block:'start'});
+  sectorEls.forEach(el=>el.className='sec');
+  document.getElementById('hexBody').innerHTML='<span class="hcur"></span>';
+
+  const res=await fetch('/api/wipe/start',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({strategy:selMethod.key,drive:selDrive,data_category:selCat,size_mb:sz})});
+  const {session_id}=await res.json();
+  session=session_id;
+
+  const es=new EventSource(`/api/wipe/progress/${session_id}`);
+  es.onmessage=e=>{
+    const d=JSON.parse(e.data);
+    const pct=d.percent||0;
+    document.getElementById('bigPct').textContent=pct+'%';
+    document.getElementById('pFill').style.width=pct+'%';
+    document.getElementById('pLabel').textContent=d.pass_label||'';
+    document.getElementById('pStrat').textContent=d.strategy?`⚡ ${d.strategy}`:'';
+    document.getElementById('mPass').textContent=d.pass||'—';
+    document.getElementById('mTotal').textContent=d.total_passes||'—';
+    updateSectors(pct);
+    if(d.entropy)updateEntropy(d.entropy);
+    if(d.hex_preview&&d.hex_preview.length>4)renderHex(d.hex_preview+'00'.repeat(32));
+    if(d.done){es.close();if(d.error)alert('Error: '+d.error);else{updateSectors(100);updateEntropy(7.99);setTimeout(()=>showCert(session_id),500)}}
+  };
+}
+
+async function showCert(sid){
+  const data=await(await fetch(`/api/wipe/result/${sid}`)).json();
+  const c=data.cert_data,wl=data.wipe_log;
+  wipes++;certs++;
+  document.getElementById('sW').textContent=wipes;
+  document.getElementById('sC').textContent=certs;
+  document.getElementById('certId').textContent=c.certificate_id;
+  document.getElementById('certHash').textContent=c.sha256_hash;
+  document.getElementById('vajraInfo').textContent=`${wl.algorithm||'VAJRA v1.0'} · ${wl.method_label||''} · ${wl.passes||0} passes · Entropy: ${wl.entropy_score||0}/8.0`;
+  const bc=c.blockchain_anchor||{};
+  document.getElementById('bcH').textContent=bc.block_hash||'—';
+  document.getElementById('bcN').textContent=bc.nonce||'—';
+  document.getElementById('bcP').textContent=(bc.prev_hash||'—').substring(0,48)+'...';
+  const tb=document.getElementById('hashBody');tb.innerHTML='';
+  (c.wipe_result?.pass_hashes||[]).forEach(h=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td>${h.pass}</td><td>${h.name||h.pattern}</td><td style="word-break:break-all">${h.sha256}</td>`;
+    tb.appendChild(tr);
+  });
+  document.getElementById('qrImg').src=`/api/cert/qr/${sid}?_=${Date.now()}`;
+  document.getElementById('certsec').classList.add('show');
+  document.getElementById('certsec').scrollIntoView({behavior:'smooth',block:'start'});
+  updateSys();
+}
+
+function dlC(t){if(session)window.open(`/api/cert/${t}/${session}`)}
+
+function resetApp(){
+  session=null;selDrive=null;selMethod=null;selCat='generic';
+  document.getElementById('progsec').classList.remove('show');
+  document.getElementById('certsec').classList.remove('show');
+  document.getElementById('sumbox').classList.remove('show');
+  document.getElementById('threatBox').classList.remove('show');
+  document.getElementById('wbtn').disabled=true;
+  document.getElementById('bigPct').textContent='0%';
+  document.getElementById('pFill').style.width='0%';
+  sectorEls.forEach(el=>el.className='sec');
+  document.querySelectorAll('.di,.mi,.cat-item').forEach(e=>e.classList.remove('sel'));
+  document.querySelector('.cat-item').classList.add('sel');
+  loadMethods();window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function onDrop(e){e.preventDefault();document.getElementById('dz').classList.remove('over');const f=e.dataTransfer.files[0];if(f)verifyCert(f)}
+async function verifyCert(file){
+  const fd=new FormData();fd.append('cert_file',file);
+  const d=await(await fetch('/api/verify',{method:'POST',body:fd})).json();
+  const el=document.getElementById('vres');
+  if(d.valid){
+    el.className='vres ok';
+    el.innerHTML=`<strong>✅ VAJRA CERTIFICATE VALID — RSA-2048 Signature Verified</strong><div class="vdet">ID: ${d.cert_id}<br>Issued: ${d.issued_at?.substring(0,19)} UTC<br>Standard: ${d.standard}<br>Hash Match: ${d.hash_match} · Recovery Risk: ${d.result?.data_recovery_risk||'ZERO'}<br>Blockchain: ${d.blockchain?.block_hash?.substring(0,40)||'—'}...</div>`;
+  }else{
+    el.className='vres fail';
+    el.innerHTML=`<strong>❌ INVALID OR TAMPERED</strong><div class="vdet">${d.error||'Signature mismatch'}</div>`;
+  }
+}
+</script>
+</body>
+</html>
