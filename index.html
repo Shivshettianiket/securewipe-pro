@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔐 SecureWipe Pro - Secure Data Wiping</title>
+    <title>🔐 SecureWipe Pro - Secure Data Wiping Platform</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800;900&family=JetBrains+Mono:wght@300;400;700;800&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
@@ -16,165 +18,339 @@
             background: linear-gradient(135deg, #02060f 0%, #0a1628 100%);
             color: #e8f4ff;
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             padding: 20px;
         }
         
-        .container {
-            max-width: 700px;
-            text-align: center;
-            background: rgba(10, 22, 40, 0.5);
-            border: 1px solid rgba(0, 229, 240, 0.2);
-            border-radius: 16px;
-            padding: 60px 40px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0, 229, 240, 0.1);
-        }
-        
-        .logo {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #00e5f0, #a855f7);
-            border-radius: 16px;
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto 60px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 40px;
-            margin: 0 auto 30px;
-            box-shadow: 0 0 30px rgba(0, 229, 240, 0.3);
+            justify-content: space-between;
+            padding: 20px 30px;
+            background: rgba(6, 13, 26, 0.8);
+            border: 1px solid rgba(0, 229, 240, 0.2);
+            border-radius: 12px;
+        }
+        
+        .brand {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: #00e5f0;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .hero-icon {
+            font-size: 100px;
+            margin-bottom: 30px;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
         
         h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            background: linear-gradient(100deg, #00e5f0, #a855f7);
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(100deg, #00e5f0 0%, #a855f7 50%, #00ff88 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-weight: 900;
+            background-clip: text;
+            line-height: 1.2;
         }
         
-        .subtitle {
-            font-size: 1.1rem;
+        .tagline {
+            font-size: 1.3rem;
             color: #6b8eae;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             font-weight: 300;
         }
         
-        .description {
+        .badge {
+            display: inline-block;
+            background: rgba(255, 193, 7, 0.1);
+            border: 1px solid rgba(255, 193, 7, 0.4);
+            color: #ffc107;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            margin-bottom: 30px;
+        }
+        
+        .hero-description {
+            font-size: 1.1rem;
             color: #4a6a8a;
-            line-height: 1.6;
-            margin-bottom: 40px;
-            font-size: 0.95rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
         }
         
         .btn {
+            padding: 16px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
             display: inline-block;
+        }
+        
+        .btn-primary {
             background: linear-gradient(135deg, #00e5f0, #00b4bb);
             color: #02060f;
-            padding: 14px 40px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            margin: 10px;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
         }
         
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 24px rgba(0, 229, 240, 0.3);
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 229, 240, 0.3);
         }
         
-        .btn.secondary {
+        .btn-secondary {
             background: rgba(0, 229, 240, 0.1);
             color: #00e5f0;
             border: 1px solid #00e5f0;
         }
         
-        .btn.secondary:hover {
+        .btn-secondary:hover {
             background: rgba(0, 229, 240, 0.2);
         }
         
-        .features {
-            text-align: left;
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(0, 229, 240, 0.1);
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 80px;
         }
         
-        .feature {
-            margin: 15px 0;
+        .feature-card {
+            background: rgba(10, 22, 40, 0.5);
+            border: 1px solid rgba(0, 229, 240, 0.15);
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            border-color: rgba(0, 229, 240, 0.4);
+            transform: translateY(-5px);
+            background: rgba(10, 22, 40, 0.7);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .feature-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
             color: #00e5f0;
         }
         
-        .feature-text {
+        .feature-desc {
             color: #6b8eae;
-            font-size: 0.85rem;
-            margin-top: 3px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .standards {
+            background: rgba(10, 22, 40, 0.3);
+            border: 1px solid rgba(0, 229, 240, 0.2);
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .standards h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #00e5f0;
+        }
+        
+        .standards-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .standard-item {
+            background: rgba(6, 13, 26, 0.5);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid #00e5f0;
+            color: #6b8eae;
         }
         
         .footer {
-            margin-top: 40px;
-            font-size: 0.85rem;
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(0, 229, 240, 0.1);
             color: #4a6a8a;
         }
         
-        @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800;900&display=swap');
+        .footer-text {
+            margin-bottom: 15px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            color: #00e5f0;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: #a855f7;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="logo">🔐</div>
-        <h1>SecureWipe Pro</h1>
-        <p class="subtitle">India's First Indigenous Data Sanitization Platform</p>
-        
-        <p class="description">
-            Military-grade data wiping using the VAJRA Algorithm. 
-            Permanently erase sensitive data from drives with multiple security standards 
-            (NIST, DoD, Cryptographic Erasure).
-        </p>
-        
-        <div style="margin: 30px 0;">
-            <button class="btn" onclick="window.open('https://securewipe-pro.onrender.com', '_blank')">
-                🚀 Launch Live Demo
-            </button>
-            <br>
-            <button class="btn secondary" onclick="window.open('https://github.com/Shivshettianiket/securewipe-pro', '_blank')">
-                📁 View Source Code
-            </button>
-        </div>
-        
-        <div class="features">
-            <div class="feature">
-                ✅ VAJRA Wipe Algorithm v1.0
-                <div class="feature-text">India's first indigenous secure erase method</div>
-            </div>
-            <div class="feature">
-                ✅ Multiple Security Standards
-                <div class="feature-text">NIST SP 800-88 • DoD 5220.22-M • Cryptographic Erasure</div>
-            </div>
-            <div class="feature">
-                ✅ Real-time Progress Tracking
-                <div class="feature-text">Live statistics with digital certificates</div>
-            </div>
-            <div class="feature">
-                ✅ PDF & Digital Signatures
-                <div class="feature-text">Tamper-proof certificates with QR codes</div>
-            </div>
-            <div class="feature">
-                ✅ Multi-Drive Support
-                <div class="feature-text">NVMe SSD • HDD • USB • Demo Mode</div>
-            </div>
-        </div>
-        
-        <div class="footer">
-            <p>🏫 Team TechnoGreen | BMIT Solapur 2026</p>
-            <p>🇮🇳 Hackathon Project</p>
-        </div>
+    <div class="navbar">
+        <div class="brand">🔐 SECUREWIPE PRO</div>
+        <div style="color: #6b8eae; font-size: 0.9rem;">v3.0 VAJRA Algorithm</div>
     </div>
+    
+    <div class="container">
+        <section class="hero">
+            <div class="hero-icon">🔐</div>
+            <h1>SecureWipe Pro</h1>
+            <p class="tagline">India's First Indigenous Secure Data Sanitization Platform</p>
+            <div class="badge">🇮🇳 VAJRA Algorithm v1.0</div>
+            
+            <p class="hero-description">
+                Military-grade data wiping using India's proprietary VAJRA Algorithm. 
+                Permanently erase sensitive data from any storage device with multiple 
+                security standards including NIST SP 800-88, DoD 5220.22-M, and Cryptographic Erasure.
+            </p>
+            
+            <div class="buttons">
+                <button class="btn btn-primary" onclick="window.open('https://securewipe-pro.onrender.com', '_blank')">
+                    🚀 Launch Live Demo
+                </button>
+                <button class="btn btn-secondary" onclick="window.open('https://github.com/Shivshettianiket/securewipe-pro', '_blank')">
+                    📁 View Source Code
+                </button>
+            </div>
+        </section>
+        
+        <section class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <div class="feature-title">VAJRA Algorithm</div>
+                <div class="feature-desc">India's first indigenous secure erase method with military-grade encryption and data destruction patterns.</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <div class="feature-title">Multiple Standards</div>
+                <div class="feature-desc">NIST SP 800-88, DoD 5220.22-M, and Cryptographic Erasure protocols for different security levels.</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <div class="feature-title">Real-time Progress</div>
+                <div class="feature-desc">Live statistics and progress tracking with detailed logs for every wipe operation.</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📄</div>
+                <div class="feature-title">Digital Certificates</div>
+                <div class="feature-desc">Auto-generated PDF certificates with RSA-2048 digital signatures and QR codes for verification.</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">💾</div>
+                <div class="feature-title">Multi-Device Support</div>
+                <div class="feature-desc">Support for NVMe SSD, SATA SSD, HDD, USB drives, and SD cards with unified interface.</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🔐</div>
+                <div class="feature-title">Enterprise Ready</div>
+                <div class="feature-desc">Audit logs, certificate verification, and compliance reporting for enterprise deployments.</div>
+            </div>
+        </section>
+        
+        <section class="standards">
+            <h2>Security Standards Implemented</h2>
+            <div class="standards-list">
+                <div class="standard-item">
+                    <strong>NIST SP 800-88</strong>
+                    <p>Guidelines for Media Sanitization</p>
+                </div>
+                <div class="standard-item">
+                    <strong>DoD 5220.22-M</strong>
+                    <p>Department of Defense standard</p>
+                </div>
+                <div class="standard-item">
+                    <strong>Cryptographic Erasure</strong>
+                    <p>Encryption-based data destruction</p>
+                </div>
+                <div class="standard-item">
+                    <strong>VAJRA v1.0 Supreme</strong>
+                    <p>India's indigenous algorithm</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer class="footer">
+        <div class="footer-text">
+            <strong>Team TechnoGreen</strong> | BMIT Solapur 2026
+        </div>
+        <div class="footer-text">
+            🇮🇳 Hackathon Project - India's First Indigenous Data Sanitization Platform
+        </div>
+        <div class="social-links">
+            <a href="https://github.com/Shivshettianiket/securewipe-pro" target="_blank">GitHub</a>
+            <a href="https://securewipe-pro.onrender.com" target="_blank">Live Demo</a>
+        </div>
+    </footer>
 </body>
 </html>
