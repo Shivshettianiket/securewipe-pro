@@ -42,3 +42,14 @@ npm run migrate
 ## 6. Start the Application
 ```bash
 npm start
+
+
+---
+
+## 🔹 Commit 7: Add Access Instructions
+```md
+## 7. Access the Application
+Open browser:
+http://localhost:3000
+
+
