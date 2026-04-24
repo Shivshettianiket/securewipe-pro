@@ -26,3 +26,12 @@ Create a `.env` file:
 ```bash
 DATABASE_URL=<your_database_url>
 PORT=3000
+
+---
+
+## 🔹 Commit 5: Add Database Migration Step
+```md
+
+## 5. Run Database Migrations
+```bash
+npm run migrate
