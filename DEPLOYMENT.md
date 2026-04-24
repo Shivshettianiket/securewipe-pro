@@ -15,3 +15,14 @@ cd securewipe-pro
 ## 3. Install Dependencies
 ```bash
 npm install
+
+---
+
+## 🔹 Commit 4: Add Environment Configuration
+```md
+## 4. Configure Environment Variables
+Create a `.env` file:
+
+```bash
+DATABASE_URL=<your_database_url>
+PORT=3000
