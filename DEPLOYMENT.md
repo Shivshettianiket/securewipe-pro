@@ -31,7 +31,14 @@ PORT=3000
 
 ## 🔹 Commit 5: Add Database Migration Step
 ```md
-
 ## 5. Run Database Migrations
 ```bash
 npm run migrate
+
+---
+
+## 🔹 Commit 6: Add Application Start Step
+```md
+## 6. Start the Application
+```bash
+npm start
