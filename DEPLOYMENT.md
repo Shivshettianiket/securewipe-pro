@@ -52,4 +52,9 @@ npm start
 Open browser:
 http://localhost:3000
 
+## 8. Production Notes
+- Use cloud platforms like Render, Railway, or AWS
+- Use managed database (Supabase, Neon, PlanetScale)
+- Set environment variables securely
+
 
