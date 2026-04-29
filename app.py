@@ -74,11 +74,6 @@ def api_methods(): return jsonify(VAJRA_STRATEGIES)
 
 @app.route("/api/categories")
 def api_categories(): return jsonify(DATA_CATEGORIES)
-@app.route("/api/host_id")
-def api_host_id(): return jsonify(get_host_id())
-
-@app.route("/api/host_id/reset", methods=["POST"])
-def api_host_id_reset(): return jsonify({"status":"success","host_id":reset_host_id()})
 
 @app.route("/api/system")
 def api_system(): return jsonify({**get_sysinfo(),**_stats})

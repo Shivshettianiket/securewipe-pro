@@ -6,14 +6,10 @@ import subprocess
 import time
 from pyngrok import ngrok
 
-# Set your ngrok auth token here (get from https://ngrok.com/)
-NGROK_TOKEN = "YOUR_NGROK_TOKEN_HERE"
-
 def generate_live_link():
     """Generate a live public URL for your SecureWipe Pro app"""
     
-    # Set auth token
-    ngrok.set_auth_token(NGROK_TOKEN)
+    # Auth token is already configured globally
     
     print("\n" + "="*70)
     print("  🔐 SecureWipe Pro - Live Link Generator")
