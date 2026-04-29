@@ -8,6 +8,7 @@ from flask import Flask, render_template, jsonify, request, send_file, Response,
 from vajra_algorithm import vajra_wipe, VAJRAThreatScorer, HardwareDetector, VAJRA_VERSION
 from cert_generator import generate_certificate, verify_certificate
 from host_id_generator import get_host_id, generate_host_id, reset_host_id
+from config import DEBUG, PORT, HOST, CERTS_DIR, LOG_FILE, ALLOWED_EXTENSIONS, MAX_FILE_SIZE
 
 logging.basicConfig(level=logging.INFO)
 app = Flask(__name__)
