@@ -134,7 +134,24 @@ After every wipe, SecureWipe Pro issues a **digitally signed certificate** conta
 ---
 
 ## 🏆 Recognition
+---
 
+## 🗺️ Roadmap & Future Enhancements
+
+- [ ] **Hardware-Level Sanitization:** Integration with `hdparm` for ATA Secure Erase on physical SATA drives.
+- [ ] **Multi-threading:** Parallel block overwriting to improve speed on high-capacity (1TB+) drives.
+- [ ] **Cloud Dashboard:** A centralized portal to verify certificates using the generated QR codes.
+- [ ] **Extended Standards:** Adding British HMG IS5 and German BSI VSITR standards.
+
+---
+
+## 📐 Mathematical Model
+
+The VAJRA algorithm's chaos engine is defined by the iterative function:
+
+$$x_{n+1} = r \cdot x_n(1 - x_n)$$
+
+To ensure maximum aperiodicity (chaos), the system is locked at a growth rate of $r \approx 3.99$, ensuring that the generated overwrite patterns never repeat, even across multiple passes.
 - Presented at **Uddyam Idea Hackathon 2026** — PAH Solapur University
 - Built as part of BMIT Solapur's innovation initiative
 
