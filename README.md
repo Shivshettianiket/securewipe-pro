@@ -79,6 +79,8 @@ python app.py
 To ensure SecureWipe Pro functions correctly, your system must meet the following requirements:
 ### 1. System Requirements
 * **Python 3.8+**: Ensure Python is added to your PATH.
+* * **Administrator/Sudo Privileges**: Required for low-level drive access and bit-writing.
+
 
 
 
