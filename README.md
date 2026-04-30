@@ -81,6 +81,11 @@ To ensure SecureWipe Pro functions correctly, your system must meet the followin
 * **Python 3.8+**: Ensure Python is added to your PATH.
 * * **Administrator/Sudo Privileges**: Required for low-level drive access and bit-writing.
   * * **Internet Connection**: Needed for QR code generation and live certificate verification.
+      
+### 2. Required Libraries
+Install the necessary dependencies using pip:
+```bash
+pip install flask cryptography reportlab qrcode[pil]
 
 
 
