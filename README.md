@@ -77,6 +77,9 @@ python app.py
 ## 📋 Prerequisites & Installation
 
 To ensure SecureWipe Pro functions correctly, your system must meet the following requirements:
+### 1. System Requirements
+* **Python 3.8+**: Ensure Python is added to your PATH.
+
 
 
 ## 🛡️ Standards Implemented
