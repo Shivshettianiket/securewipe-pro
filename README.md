@@ -72,6 +72,12 @@ python app.py
 > ⚠️ **Demo Mode Available** — You can test all features without connecting a real drive. No data is at risk.
 
 ---
+---
+
+## 📋 Prerequisites & Installation
+
+To ensure SecureWipe Pro functions correctly, your system must meet the following requirements:
+
 
 ## 🛡️ Standards Implemented
 
