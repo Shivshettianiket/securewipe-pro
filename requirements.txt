@@ -6,3 +6,4 @@ qrcode[pil]>=7.4
 pillow>=10.0
 python-dotenv>=1.0.0
 colorama>=0.4.6
+gunicorn>=21.2.0
