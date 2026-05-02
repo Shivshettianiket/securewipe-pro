@@ -9,3 +9,23 @@
 ---
 
 > Built by **Team TechnoGreen** · BMIT Solapur · Presented at Uddyam Idea Hackathon 2026, PAH Solapur University
+---
+
+## 📚 Table of Contents
+
+- [The VAJRA Algorithm](#-the-vajra-algorithm)
+- [Comparison Table](#-comparison-vajra-vs-standard-methods)
+- [Features](#-features)
+- [Quick Start](#-quick-start)
+- [Prerequisites](#-prerequisites--installation)
+- [Standards Implemented](#-standards-implemented)
+- [Tech Stack](#-tech-stack)
+- [Project Structure](#-project-structure)
+- [System Architecture](#-how-it-works-system-architecture)
+- [How VAJRA Works](#-how-vajra-works-technical)
+- [Mathematical Model](#-mathematical-model)
+- [Certificate](#-certificate-sample)
+- [Recognition](#-recognition)
+- [Roadmap](#-roadmap--future-enhancements)
+- [Disclaimer](#-disclaimer)
+- [License](#-license)
