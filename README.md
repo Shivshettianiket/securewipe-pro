@@ -6,4 +6,6 @@
 ![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
 ![Status](https://img.shields.io/badge/Status-Prototype-orange?style=flat-square)
 ![Standards](https://img.shields.io/badge/NIST%20SP%20800--88-Compliant-blue?style=flat-square)
+---
 
+> Built by **Team TechnoGreen** · BMIT Solapur · Presented at Uddyam Idea Hackathon 2026, PAH Solapur University
