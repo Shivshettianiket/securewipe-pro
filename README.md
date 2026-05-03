@@ -40,3 +40,5 @@ making forensic recovery computationally infeasible.
 
 ## 🧠 The VAJRA Algorithm
 
+**VAJRA** — *Verified Adaptive Junk-data Removal Algorithm* — is an indigenously designed data sanitization algorithm at the core of SecureWipe Pro.
+
