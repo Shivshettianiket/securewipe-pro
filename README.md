@@ -29,3 +29,10 @@
 - [Roadmap](#-roadmap--future-enhancements)
 - [Disclaimer](#-disclaimer)
 - [License](#-license)
+---
+
+## 🔍 About
+
+**SecureWipe Pro** is an open-source, hardware-level data sanitization platform built in Python and Flask.  
+It goes beyond simple file deletion — permanently destroying data at the bit level on HDDs, SSDs, NVMe, and USB drives,  
+making forensic recovery computationally infeasible.
