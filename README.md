@@ -47,3 +47,4 @@ Unlike standard wipe methods, VAJRA uses **Logistic Map chaos theory** to genera
 Standard wiping:   0x00 → 0xFF → 0x00  (predictable, reversible)
 VAJRA wiping:      chaos-generated patterns → entropy verified → certificate issued
 ```
+**Why it matters:** Predictable patterns can potentially be reversed with forensic tools. VAJRA's chaotic overwrite patterns make data recovery computationally infeasible.
