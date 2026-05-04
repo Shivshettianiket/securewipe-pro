@@ -43,3 +43,7 @@ making forensic recovery computationally infeasible.
 **VAJRA** — *Verified Adaptive Junk-data Removal Algorithm* — is an indigenously designed data sanitization algorithm at the core of SecureWipe Pro.
 
 Unlike standard wipe methods, VAJRA uses **Logistic Map chaos theory** to generate unpredictable, non-repeating overwrite patterns, combined with **Shannon Entropy verification** to mathematically confirm that all original data has been destroyed.
+```
+Standard wiping:   0x00 → 0xFF → 0x00  (predictable, reversible)
+VAJRA wiping:      chaos-generated patterns → entropy verified → certificate issued
+```
