@@ -55,3 +55,4 @@ VAJRA wiping:      chaos-generated patterns → entropy verified → certificate
 | Method | Pattern Type | Recoverability | Verification |
 | :--- | :--- | :--- | :--- |
 | **Zero Fill** | Static (0x00) | Possible (Magnetic Trace) | None |
+| **DoD 5220.22-M** | Fixed Patterns | Difficult | Bit-level only |
