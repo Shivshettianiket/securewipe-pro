@@ -74,3 +74,12 @@ VAJRA wiping:      chaos-generated patterns → entropy verified → certificate
 | Digital Signature | RSA-2048 / SHA-256 / PSS signing | ✅ |
 | QR Verification | QR code for instant third-party certificate verification | ✅ |
 | Certificate Verify | Upload & verify any previously issued certificate | ✅ |
+---
+
+## 🚀 Quick Start
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/Shivshettianiket/securewipe-pro.git
+cd securewipe-pro
+
