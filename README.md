@@ -83,3 +83,6 @@ VAJRA wiping:      chaos-generated patterns → entropy verified → certificate
 git clone https://github.com/Shivshettianiket/securewipe-pro.git
 cd securewipe-pro
 
+# 2. Install dependencies
+pip install -r requirements.txt
+
