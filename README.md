@@ -59,3 +59,18 @@ VAJRA wiping:      chaos-generated patterns → entropy verified → certificate
 | **VAJRA (Ours)** | **Chaotic (Logistic Map)** | **Infeasible** | **Shannon Entropy** |
 
 > **Key Advantage:** Standard methods use predictable patterns. VAJRA uses mathematical chaos — even if a forensic tool knows the algorithm, it cannot predict the overwrite pattern without the unique hardware-derived seed.
+---
+
+## ✨ Features
+
+| Feature | Description | Status |
+|---|---|---|
+| VAJRA Algorithm | Chaos-theory based wipe with entropy verification | ✅ |
+| Drive Detection | Real drives + Demo mode (safe testing) | ✅ |
+| Wipe Standards | Zero-fill, DoD 3-pass, DoD 7-pass, NIST SP 800-88, Crypto Erasure | ✅ |
+| Live Progress | Real-time progress bar via Server-Sent Events (SSE) | ✅ |
+| PDF Certificate | Tamper-proof wipe certificate via ReportLab | ✅ |
+| JSON Certificate | Machine-readable certificate for system integration | ✅ |
+| Digital Signature | RSA-2048 / SHA-256 / PSS signing | ✅ |
+| QR Verification | QR code for instant third-party certificate verification | ✅ |
+| Certificate Verify | Upload & verify any previously issued certificate | ✅ |
