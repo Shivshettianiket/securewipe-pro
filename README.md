@@ -57,3 +57,5 @@ VAJRA wiping:      chaos-generated patterns → entropy verified → certificate
 | **Zero Fill** | Static (0x00) | Possible (Magnetic Trace) | None |
 | **DoD 5220.22-M** | Fixed Patterns | Difficult | Bit-level only |
 | **VAJRA (Ours)** | **Chaotic (Logistic Map)** | **Infeasible** | **Shannon Entropy** |
+
+> **Key Advantage:** Standard methods use predictable patterns. VAJRA uses mathematical chaos — even if a forensic tool knows the algorithm, it cannot predict the overwrite pattern without the unique hardware-derived seed.
