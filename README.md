@@ -92,3 +92,4 @@ python app.py
 # 4. Open in browser
 # http://localhost:5000
 ```
+> ⚠️ **Demo Mode Available** — You can test all features without connecting a real drive. No data is at risk.
