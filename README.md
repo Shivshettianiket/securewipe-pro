@@ -93,3 +93,12 @@ python app.py
 # http://localhost:5000
 ```
 > ⚠️ **Demo Mode Available** — You can test all features without connecting a real drive. No data is at risk.
+---
+
+## 📋 Prerequisites & Installation
+
+### 1. System Requirements
+
+- **Python 3.8+**: Ensure Python is added to your PATH.
+- **Administrator/Sudo Privileges**: Required for low-level drive access and bit-writing.
+- **Internet Connection**: Needed for QR code generation and live certificate verification.
