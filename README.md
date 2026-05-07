@@ -127,3 +127,5 @@ pip install flask cryptography reportlab qrcode[pil]
 - **Algorithm:** Logistic Map (chaos theory), Shannon Entropy
 - **Frontend:** HTML/CSS/JS, SSE for live updates
 - **Deployment:** Procfile (Heroku-compatible)
+- **Frontend:** HTML/CSS/JS, SSE for live updates
+- **Deployment:** Procfile (Heroku-compatible)
