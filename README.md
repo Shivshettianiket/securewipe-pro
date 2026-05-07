@@ -146,3 +146,4 @@ graph TD
     G --> H[Output: PDF/JSON Certificate + QR]
     H --> I[Frontend: Live Download Link]
 ```
+The user selects a drive and wipe method from the dashboard. The Flask backend routes the request to either the VAJRA engine or a standard wipe module. After wiping, entropy is verified and a signed certificate is generated and returned to the user.
