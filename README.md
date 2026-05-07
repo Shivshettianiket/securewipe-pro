@@ -117,3 +117,8 @@ pip install flask cryptography reportlab qrcode[pil]
 | DoD 5220.22-M | 3-pass & 7-pass | US Department of Defense standard |
 | Cryptographic Erasure | Random pattern | Key destruction for encrypted drives |
 | **VAJRA** | Chaos + Entropy | Indigenous algorithm (our innovation) |
+---
+
+## 🏗️ Tech Stack
+
+- **Backend:** Python, Flask
