@@ -122,3 +122,4 @@ pip install flask cryptography reportlab qrcode[pil]
 ## 🏗️ Tech Stack
 
 - **Backend:** Python, Flask
+- **Crypto:** RSA-2048, SHA-256, PSS (via `cryptography` library)
