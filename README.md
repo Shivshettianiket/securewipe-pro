@@ -134,3 +134,15 @@ pip install flask cryptography reportlab qrcode[pil]
 ---
 
 ## ⚙️ How it Works: System Architecture
+```mermaid
+graph TD
+    A[Frontend: User Dashboard] -->|Select Drive & Method| B[Backend: Flask Controller]
+    B --> C{Method Selected?}
+    C -->|VAJRA| D[vajra_algorithm.py: Chaotic Overwrite]
+    C -->|Standard| E[Standard Wipe: NIST/DoD]
+    D --> F[Entropy Verification]
+    E --> F
+    F --> G[cert_generator.py: RSA-2048 Signing]
+    G --> H[Output: PDF/JSON Certificate + QR]
+    H --> I[Frontend: Live Download Link]
+```
