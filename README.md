@@ -147,3 +147,5 @@ graph TD
     H --> I[Frontend: Live Download Link]
 ```
 The user selects a drive and wipe method from the dashboard. The Flask backend routes the request to either the VAJRA engine or a standard wipe module. After wiping, entropy is verified and a signed certificate is generated and returned to the user.
+
+> 🔄 **Live Progress:** Wipe progress is streamed to the frontend in real-time using **Server-Sent Events (SSE)** — no page refresh needed.
