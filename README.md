@@ -129,3 +129,5 @@ pip install flask cryptography reportlab qrcode[pil]
 - **Deployment:** Procfile (Heroku-compatible)
 - **Frontend:** HTML/CSS/JS, SSE for live updates
 - **Deployment:** Procfile (Heroku-compatible)
+  
+> 📦 The `certs/` folder is gitignored — certificates are generated locally on each wipe operation.
