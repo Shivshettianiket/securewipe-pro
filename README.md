@@ -123,3 +123,7 @@ pip install flask cryptography reportlab qrcode[pil]
 
 - **Backend:** Python, Flask
 - **Crypto:** RSA-2048, SHA-256, PSS (via `cryptography` library)
+- **Certificates:** ReportLab (PDF), JSON
+- **Algorithm:** Logistic Map (chaos theory), Shannon Entropy
+- **Frontend:** HTML/CSS/JS, SSE for live updates
+- **Deployment:** Procfile (Heroku-compatible)
