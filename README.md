@@ -107,3 +107,13 @@ python app.py
 ```bash
 pip install flask cryptography reportlab qrcode[pil]
 ```
+---
+
+## 🛡️ Standards Implemented
+
+| Standard | Method | Description |
+|---|---|---|
+| NIST SP 800-88 | Clear + Purge | US Government data sanitization guideline |
+| DoD 5220.22-M | 3-pass & 7-pass | US Department of Defense standard |
+| Cryptographic Erasure | Random pattern | Key destruction for encrypted drives |
+| **VAJRA** | Chaos + Entropy | Indigenous algorithm (our innovation) |
