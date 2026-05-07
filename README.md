@@ -102,3 +102,8 @@ python app.py
 - **Python 3.8+**: Ensure Python is added to your PATH.
 - **Administrator/Sudo Privileges**: Required for low-level drive access and bit-writing.
 - **Internet Connection**: Needed for QR code generation and live certificate verification.
+### 2. Required Libraries
+
+```bash
+pip install flask cryptography reportlab qrcode[pil]
+```
