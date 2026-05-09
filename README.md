@@ -167,3 +167,4 @@ def vajra_wipe(device):
     assert entropy > THRESHOLD         # Confirm destruction
     issue_certificate(device, entropy) # Tamper-proof proof of wipe
 ```
+The Logistic Map equation `x_{n+1} = r * x_n * (1 - x_n)` at r ≈ 3.99 produces chaotic, sensitive-to-initial-conditions output — making each wipe pattern unique and forensically irreversible.
