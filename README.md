@@ -177,4 +177,5 @@ The VAJRA algorithm's chaos engine is defined by the iterative function:
 $$x_{n+1} = r \cdot x_n(1 - x_n)$$
 
 To ensure maximum aperiodicity (chaos), the system is locked at a growth rate of $r \approx 3.99$, ensuring generated overwrite patterns never repeat, even across multiple passes.
+
 Shannon Entropy is calculated after each wipe pass. A score close to **8.0 bits/byte** confirms maximum randomness, mathematically proving the original data has been destroyed and cannot be reconstructed.
