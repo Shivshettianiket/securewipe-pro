@@ -168,3 +168,12 @@ def vajra_wipe(device):
     issue_certificate(device, entropy) # Tamper-proof proof of wipe
 ```
 The Logistic Map equation `x_{n+1} = r * x_n * (1 - x_n)` at r ≈ 3.99 produces chaotic, sensitive-to-initial-conditions output — making each wipe pattern unique and forensically irreversible.
+---
+
+## 📐 Mathematical Model
+
+The VAJRA algorithm's chaos engine is defined by the iterative function:
+
+$$x_{n+1} = r \cdot x_n(1 - x_n)$$
+
+To ensure maximum aperiodicity (chaos), the system is locked at a growth rate of $r \approx 3.99$, ensuring generated overwrite patterns never repeat, even across multiple passes.
