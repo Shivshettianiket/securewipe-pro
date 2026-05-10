@@ -187,3 +187,5 @@ After every wipe, SecureWipe Pro issues a **digitally signed certificate** conta
 
 - Device serial number & metadata
 - Wipe standard used
+- Shannon entropy score (proof of randomness)
+- RSA-2048 digital signature
