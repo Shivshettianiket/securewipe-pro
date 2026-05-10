@@ -186,3 +186,4 @@ Shannon Entropy is calculated after each wipe pass. A score close to **8.0 bits/
 After every wipe, SecureWipe Pro issues a **digitally signed certificate** containing:
 
 - Device serial number & metadata
+- Wipe standard used
