@@ -190,3 +190,6 @@ After every wipe, SecureWipe Pro issues a **digitally signed certificate** conta
 - Shannon entropy score (proof of randomness)
 - RSA-2048 digital signature
 - QR code for instant online verification
+Certificates are issued in two formats:
+
+| Format | Use Case |
