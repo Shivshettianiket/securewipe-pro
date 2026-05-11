@@ -193,3 +193,4 @@ After every wipe, SecureWipe Pro issues a **digitally signed certificate** conta
 Certificates are issued in two formats:
 
 | Format | Use Case |
+|---|---|
