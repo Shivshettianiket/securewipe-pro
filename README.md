@@ -195,3 +195,4 @@ Certificates are issued in two formats:
 | Format | Use Case |
 |---|---|
 | **PDF** | Human-readable, printable compliance proof |
+| **JSON** | Machine-readable, for system integration and audits |
