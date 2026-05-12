@@ -196,3 +196,5 @@ Certificates are issued in two formats:
 |---|---|
 | **PDF** | Human-readable, printable compliance proof |
 | **JSON** | Machine-readable, for system integration and audits |
+
+> 🔏 Every certificate is signed with **RSA-2048 + SHA-256 + PSS padding** — making tampering detectable. The QR code links to a live verification endpoint to confirm certificate authenticity.
