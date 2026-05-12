@@ -198,3 +198,5 @@ Certificates are issued in two formats:
 | **JSON** | Machine-readable, for system integration and audits |
 
 > 🔏 Every certificate is signed with **RSA-2048 + SHA-256 + PSS padding** — making tampering detectable. The QR code links to a live verification endpoint to confirm certificate authenticity.
+
+This is especially useful for **IT asset disposal**, **GDPR/data compliance**, and **enterprise drive decommissioning** — where proof of destruction is legally required.
